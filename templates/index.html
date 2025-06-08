@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>Fish Species Classifier</title>
+</head>
+<body>
+  <h1>Upload a Fish Image</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*">
+    <input type="submit" value="Classify">
+  </form>
+
+  {% if prediction %}
+    <h2>Prediction: {{ prediction }}</h2>
+    <h3>Confidence: {{ confidence | round(2) }}%</h3>
+    <img src="{{ url_for('static', filename='uploads/' + image_file) }}" width="300">
+  {% endif %}
+</body>
+</html>
